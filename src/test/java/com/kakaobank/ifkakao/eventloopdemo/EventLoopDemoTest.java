@@ -7,6 +7,7 @@ import org.junit.jupiter.api.parallel.Execution;
 import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import reactor.blockhound.BlockHound;
 
 import java.time.Duration;
 
@@ -16,6 +17,7 @@ class EventLoopDemoTest {
 
     @BeforeAll
     public static void beforeAll() {
+        BlockHound.install();
         System.setProperty("reactor.netty.ioWorkerCount", "4");
     }
 
